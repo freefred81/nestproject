@@ -1,0 +1,18 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "******",
+  "database": "fscamuzzi",
+  "entities": [ "./src/shared/model/entities/*.entity{.ts,.js}",
+    "./src/shared/model/entities/**/*.entity{.ts,.js}"],
+  "synchronize": false,
+  "migrationsRun": true,
+  "migrations": ["migration/*.ts"], 
+  "cli": {
+    "migrationsDir": "./migration",
+    "entitiesDir": "./src/shared/model/entities"
+  },
+  "logging": true
+}
