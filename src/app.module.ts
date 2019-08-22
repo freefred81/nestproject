@@ -8,13 +8,30 @@ import { ErrorsInterceptor } from './shared/interceptors/exception.interceptor';
 import { TransformInterceptor } from './shared/interceptors/transform.interceptor';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), OpportunityModule],
+  imports: [TypeOrmModule.forRoot({
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "****",
+    "database": "fscamuzzi",
+    "entities": [ "./src/shared/model/entities/*.entity{.ts,.js}",
+      "./src/shared/model/entities/**/*.entity{.ts,.js}"],
+    "synchronize": false,
+    "migrationsRun": true,
+    "migrations": ["migration/*.ts"], 
+    "cli": {
+      "migrationsDir": "./migration",
+      "entitiesDir": "./src/shared/model/entities"
+    },
+    "logging": true
+  }), OpportunityModule],
   controllers: [],
   providers: [
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: LoggingInterceptor,
-    },
+    // {
+    //   provide: APP_INTERCEPTOR,
+    //   useClass: LoggingInterceptor,
+    // },
     {
       provide: APP_INTERCEPTOR,
       useClass: ErrorsInterceptor,

@@ -1,16 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { OpportunityRepository } from '../repository/classes/opportunity.repository';
+// import { OpportunityRepository } from '../repository/classes/opportunity.repository';
 import { OpportunityDto } from 'src/shared/model/dto/OpportunityDto';
 import { QueryParams } from 'dist/src/shared/model/common/queryparams';
+import { Opportunity } from 'src/shared/model/entities/opportunity.entity';
+import { RepositoryBase, LinqRepository } from 'typeorm-linq-repository';
+import { OpportunityRepository } from '../repository/classes/opportunity.repository';
+ 
 
 
 @Injectable()
 export class OpportunityService {
   constructor(
-    @InjectRepository(OpportunityRepository)
-    private readonly opportunityRepository: OpportunityRepository
+    // @InjectRepository(Opportunity)
+    private opportunityRepository: OpportunityRepository
+
   ) { }
+
 
 
   getAll = async (): Promise<OpportunityDto[]> => {
@@ -23,18 +29,18 @@ export class OpportunityService {
 
   findNotDeleted = async (params: QueryParams): Promise<OpportunityDto[]> => {
 
-    let query = this.opportunityRepository.getAll()
+    let query =  await this.opportunityRepository.getAll()
       .where(xx => xx.isdeleted)
       .isFalse();
 
-    const countNotDeleted = await query.count();
+    const countNotDeleted =   query.length;
 
     // Set paging parameters on the query.
-    query = query
-      .skip(params.skip)
-      .take(params.tale);
+    // query = query
+    //   .skip(params.skip)
+    //   .take(params.tale);
 
-    const result = await query;
+    const result =  query;
     return result.map(xx => xx.ToDto());
 
   }
