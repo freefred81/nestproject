@@ -6,7 +6,7 @@ import { QueryParams } from 'dist/src/shared/model/common/queryparams';
 import { Opportunity } from 'src/shared/model/entities/opportunity.entity';
 import { RepositoryBase, LinqRepository } from 'typeorm-linq-repository';
 import { OpportunityRepository } from '../repository/classes/opportunity.repository';
- 
+
 
 
 @Injectable()
@@ -29,18 +29,18 @@ export class OpportunityService {
 
   findNotDeleted = async (params: QueryParams): Promise<OpportunityDto[]> => {
 
-    let query =  await this.opportunityRepository.getAll()
+    let query = this.opportunityRepository.getAll()
       .where(xx => xx.isdeleted)
       .isFalse();
 
-    const countNotDeleted =   query.length;
+    const countNotDeleted = await query.count();
 
     // Set paging parameters on the query.
-    // query = query
-    //   .skip(params.skip)
-    //   .take(params.tale);
+    query =  query
+      .skip(params.skip)
+      .take(params.tale);
 
-    const result =  query;
+    const result = await query;
     return result.map(xx => xx.ToDto());
 
   }
