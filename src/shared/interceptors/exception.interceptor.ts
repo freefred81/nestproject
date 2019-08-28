@@ -4,10 +4,10 @@ import {
   HttpException,
   HttpStatus,
   Injectable,
-  NestInterceptor,
-} from '@nestjs/common';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+  NestInterceptor
+} from "@nestjs/common";
+import { Observable, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 
 @Injectable()
 export class ErrorsInterceptor implements NestInterceptor {
@@ -16,8 +16,8 @@ export class ErrorsInterceptor implements NestInterceptor {
       .handle()
       .pipe(
         catchError(err =>
-          throwError(new HttpException(err, HttpStatus.BAD_GATEWAY)),
-        ),
+          throwError(new HttpException(err, HttpStatus.BAD_GATEWAY))
+        )
       );
   }
 }

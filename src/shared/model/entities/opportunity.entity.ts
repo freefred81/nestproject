@@ -1,115 +1,115 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 
-import { OpportunityDto } from '../dto/OpportunityDto';
-import { plainToClass } from 'class-transformer';
+import { OpportunityDto } from "../dto/OpportunityDto";
+import { plainToClass } from "class-transformer";
 
-@Entity('opportunity', { schema: 'public' })
-@Index('hcu_idx_opportunity_sfid', ['sfid'], { unique: true })
+@Entity("opportunity", { schema: "public" })
+@Index("hcu_idx_opportunity_sfid", ["sfid"], { unique: true })
 export class Opportunity {
-  @Column('character varying', {
+  @Column("character varying", {
     nullable: true,
     length: 18,
-    name: 'recordtypeid',
+    name: "recordtypeid"
   })
   recordtypeid: string | null;
 
-  @Column('character varying', {
+  @Column("character varying", {
     nullable: true,
     length: 18,
-    name: 'accountid',
+    name: "accountid"
   })
   accountid: string | null;
 
-  @Column('character varying', {
+  @Column("character varying", {
     nullable: true,
     length: 40,
-    name: 'stagename',
+    name: "stagename"
   })
   stagename: string | null;
 
-  @Column('character varying', {
+  @Column("character varying", {
     nullable: true,
     length: 255,
-    name: 'fase_dettaglio__c',
+    name: "fase_dettaglio__c"
   })
   fase_dettaglio__c: string | null;
 
-  @Column('character varying', {
+  @Column("character varying", {
     nullable: true,
     length: 120,
-    name: 'name',
+    name: "name"
   })
   name: string | null;
 
-  @Column('character varying', {
+  @Column("character varying", {
     nullable: true,
     length: 18,
-    name: 'ownerid',
+    name: "ownerid"
   })
   ownerid: string | null;
 
-  @Column('boolean', {
+  @Column("boolean", {
     nullable: true,
-    name: 'isdeleted',
+    name: "isdeleted"
   })
   isdeleted: boolean | null;
 
-  @Column('timestamp without time zone', {
+  @Column("timestamp without time zone", {
     nullable: true,
-    name: 'systemmodstamp',
+    name: "systemmodstamp"
   })
   systemmodstamp: Date | null;
 
-  @Column('timestamp without time zone', {
+  @Column("timestamp without time zone", {
     nullable: true,
-    name: 'createddate',
+    name: "createddate"
   })
   createddate: Date | null;
 
-  @Column('character varying', {
+  @Column("character varying", {
     nullable: true,
     length: 18,
-    name: 'createdbyid',
+    name: "createdbyid"
   })
   createdbyid: string | null;
 
-  @Column('character varying', {
+  @Column("character varying", {
     nullable: true,
     length: 18,
-    name: 'contactid',
+    name: "contactid"
   })
   contactid: string | null;
 
-  @Column('character varying', {
+  @Column("character varying", {
     nullable: true,
     length: 50,
-    name: 'codice_pratica__c',
+    name: "codice_pratica__c"
   })
   codice_pratica__c: string | null;
 
-  @Column('character varying', {
+  @Column("character varying", {
     nullable: true,
     length: 18,
-    name: 'sfid',
+    name: "sfid"
   })
   sfid: string | null;
 
   @PrimaryGeneratedColumn({
-    type: 'integer',
-    name: 'id',
+    type: "integer",
+    name: "id"
   })
   id: number;
 
-  @Column('character varying', {
+  @Column("character varying", {
     nullable: true,
     length: 32,
-    name: '_hc_lastop',
+    name: "_hc_lastop"
   })
   _hc_lastop: string | null;
 
-  @Column('text', {
+  @Column("text", {
     nullable: true,
-    name: '_hc_err',
+    name: "_hc_err"
   })
   _hc_err: string | null;
 

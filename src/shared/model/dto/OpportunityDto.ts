@@ -1,11 +1,7 @@
-import {
-  IsString,
-  IsBoolean,
-  IsNotEmpty,
-  Length,
-} from 'class-validator';
-import { plainToClass, Exclude, Expose } from 'class-transformer';
-import { Opportunity } from '../entities/opportunity.entity';
+import { IsString, IsBoolean, IsNotEmpty, Length } from "class-validator";
+import { plainToClass, Exclude, Expose } from "class-transformer";
+import { Opportunity } from "../entities/opportunity.entity";
+
 
 export interface IOpportunityDto {
   recordtypeid: string;
@@ -64,14 +60,14 @@ export class OpportunityDto implements IOpportunityDto {
   contactid: string;
 
   @IsNotEmpty({
-    message: 'codicePraticaC is required.',
+    message: "codicePraticaC is required."
   })
   @Expose()
   @IsString()
   codicePraticaC: string;
 
   @IsNotEmpty({
-    message: 'sfid is required.',
+    message: "sfid is required."
   })
   @Expose()
   @Length(15, 18)
