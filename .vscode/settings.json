@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "fase"
-    ]
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib"
 }

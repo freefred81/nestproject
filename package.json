@@ -48,7 +48,6 @@
     "nodemon": "^1.19.1",
     "prettier": "1.17.0",
     "supertest": "4.0.2",
-    "ts-jest": "24.0.2",
     "ts-node": "8.1.0",
     "tsc-watch": "2.2.1",
     "tsconfig-paths": "3.8.0",

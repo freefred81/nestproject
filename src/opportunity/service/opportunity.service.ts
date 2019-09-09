@@ -1,7 +1,7 @@
 import { Injectable, Inject } from "@nestjs/common";
 // import { OpportunityRepository } from '../repository/classes/opportunity.repository';
 import { OpportunityDto } from "src/shared/model/dto/OpportunityDto";
-import { QueryParams } from "dist/src/shared/model/common/queryparams";
+import { QueryParams } from "src/shared/model/common/queryparams";
 import { OpportunityRepository } from "../repository/classes/opportunity.repository";
 import { Response } from "./../../shared/model/common";
 
